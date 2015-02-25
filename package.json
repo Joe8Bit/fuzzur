@@ -1,0 +1,36 @@
+{
+  "name": "fuzzur",
+  "version": "0.1.0",
+  "description": "A flexible input fuzzer for tests",
+  "keywords": [
+    "fuzzer",
+    "fuzzy",
+    "testing",
+    "mutation"
+  ],
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "author": {
+    "name": "Joe Pettersson",
+    "email": "joe8bit@gmail.com",
+    "url": "https://joe8bit.com"
+  },
+  "bugs": {
+    "url" : "https://github.com/Joe8Bit/fuzzur/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Joe8Bit/fuzzur.git"
+  },
+  "homepage": "https://github.com/Joe8Bit/fuzzur",
+  "license": "ISC",
+  "dependencies": {
+    "deepmerge": "^0.2.7",
+    "istanbul": "^0.3.6",
+    "lodash": "^3.3.1",
+    "mocha": "^2.1.0",
+    "type-detect": "^0.1.2"
+  }
+}
