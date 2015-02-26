@@ -1,5 +1,7 @@
 ## Fuzzur
 
+![Travis](https://api.travis-ci.org/Joe8Bit/fuzzur.svg)
+
 A [fuzzer](http://en.wikipedia.org/wiki/Fuzz_testing) for testing. This implements mutation fuzzing, in which an expect input is mutated (changed) many times in order to trigger unexpected behavior or crashes.
 
 This is based heavily on the existing [Fuzzer by Mapbox](https://github.com/mapbox/fuzzer) by Mapbox. There are a couple of key differences however:

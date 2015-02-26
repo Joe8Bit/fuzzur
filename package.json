@@ -10,7 +10,7 @@
   ],
   "main": "./src/index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "author": {
     "name": "Joe Pettersson",
@@ -18,7 +18,7 @@
     "url": "https://joe8bit.com"
   },
   "bugs": {
-    "url" : "https://github.com/Joe8Bit/fuzzur/issues"
+    "url": "https://github.com/Joe8Bit/fuzzur/issues"
   },
   "repository": {
     "type": "git",
@@ -27,10 +27,12 @@
   "homepage": "https://github.com/Joe8Bit/fuzzur",
   "license": "ISC",
   "dependencies": {
+    "coveralls": "^2.11.2",
     "deepmerge": "^0.2.7",
     "istanbul": "^0.3.6",
     "lodash": "^3.3.1",
     "mocha": "^2.1.0",
+    "mocha-lcov-reporter": "0.0.1",
     "type-detect": "^0.1.2"
   }
 }
