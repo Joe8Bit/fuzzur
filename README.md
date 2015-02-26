@@ -9,6 +9,7 @@ This is based heavily on the existing [Fuzzer by Mapbox](https://github.com/mapb
 * It implements additional `regex` and `Date` mutators
 * It's `Array` and `Object` recrusion patterns are more efficently traversed for some very large trees. I have *a little* data on this, and will update soon, it's not a massive improvement but for my use case made a difference.
 * It supports some configurable options for the `String`, `Number` and `Date` mutators.
+* It doesn't coerce number sub-types e.g. mutating an integer will result in an integer and mutating a float will result in a float.
 
 ## Install
 
