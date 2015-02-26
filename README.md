@@ -1,6 +1,6 @@
 ## Fuzzur
 
-![Travis](https://api.travis-ci.org/Joe8Bit/fuzzur.svg) [![Coverage Status](https://coveralls.io/repos/Joe8Bit/fuzzur/badge.svg?branch=master)](https://coveralls.io/r/Joe8Bit/fuzzur?branch=master) [![Code Climate](https://codeclimate.com/github/Joe8Bit/fuzzur/badges/gpa.svg)](https://codeclimate.com/github/Joe8Bit/fuzzur)
+![Travis](https://api.travis-ci.org/Joe8Bit/fuzzur.svg) [![Coverage Status](https://coveralls.io/repos/Joe8Bit/fuzzur/badge.svg?branch=master)](https://coveralls.io/r/Joe8Bit/fuzzur?branch=master) [![Code Climate](https://codeclimate.com/github/Joe8Bit/fuzzur/badges/gpa.svg)](https://codeclimate.com/github/Joe8Bit/fuzzur) [![npm version](https://badge.fury.io/js/fuzzur.svg)](http://badge.fury.io/js/fuzzur)
 
 A [fuzzer](http://en.wikipedia.org/wiki/Fuzz_testing) for testing. This implements mutation fuzzing, in which an expect input is mutated (changed) many times in order to trigger unexpected behavior or crashes.
 
