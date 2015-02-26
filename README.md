@@ -7,7 +7,7 @@ This is based heavily on the existing [Fuzzer by Mapbox](https://github.com/mapb
 * The mutation is done through one method, and internal type inference and detection. Built to satisfy my own use case.
 * Ancdotally, and again for my specific use case, it is 2x faster.
 * It implements additional `regex` and `Date` mutators
-* It's `Array` and `Object` recrusion patterns are more efficently traversed for some very large trees. I have *a little* data on this, and will update soon, it's not a massive improvement but for my use case made a difference.
+* It's `Array` and `Object` recursion patterns are more efficently traversed for some very large trees. I have *a little* data on this, and will update soon, it's not a massive improvement but for my use case made a difference.
 * It supports some configurable options for the `String`, `Number` and `Date` mutators.
 * It doesn't coerce number sub-types e.g. mutating an integer will result in an integer and mutating a float will result in a float.
 
