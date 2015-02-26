@@ -6,8 +6,9 @@ This is based heavily on the existing [Fuzzer by Mapbox](https://github.com/mapb
 
 * The mutation is done through one method, and internal type inference and detection. Built to satisfy my own use case.
 * Ancdotally, and again for my specific use case, it is 2x faster.
-* It implements `regex` mutator
-* It's `Array` and `Object` recrusion patterns are more efficently traversed for very large trees. I have *some* data on this, and will update soon, it's not a massive improvement but for my use case made a difference.
+* It implements additional `regex` and `Date` mutators
+* It's `Array` and `Object` recrusion patterns are more efficently traversed for some very large trees. I have *a little* data on this, and will update soon, it's not a massive improvement but for my use case made a difference.
+* It supports some configurable options for the `String`, `Number` and `Date` mutators.
 
 ## Install
 
@@ -17,7 +18,7 @@ npm install fuzzur
 
 ## Usage
 
-Using the fuzzer is simple, in it's most basic forum it can be used thusly.
+Using the fuzzer is simple, in it's most basic form it can be used thusly.
 
 ```javascript
 var test = require('tap').test,
@@ -35,6 +36,42 @@ test('My thing does something', function(t) {
 Fuzzur supports many data types out of the box: `Object`, `Array`, `String`, `Number`, `Regex`. It also supports `n` recursion levels for `Object` and `Array`.
 
 Please see the `./test/` directory for many more examples.
+
+##Configuation
+There are a few configurable options that can be set, they are passed in as the second argument to the `mutate()` invokation e.g.
+
+```javascript
+var test = require('tap').test,
+    fuzzur = require('fuzzur');
+
+test('My thing does something', function(t) {
+  for (var i = 0; i < 1000; i++) {
+    t.doesNotThrow(function() {
+      myThing(fuzzur.mutate('foobar', {
+        string: {
+            sampleSet: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', // The set of chars from which the mutated strings are built, can be overriden with custom sets
+            randomisationPasses: 10 // The maximum number of randomisation passes that are done on each string, a random number between 1 and this
+        },
+        number: {
+          integer: {
+              min: -1000, // The floor or numbers to generate from
+              max: 10000 // The ceiling of features to generate too
+            },
+            float: {
+              min: -1000, // The floor or numbers to generate from
+              max: 10000 // The ceiling of features to generate too
+              arbitraryPrecision: 2 // How many points of precision should be passed into .toFixed()
+            }
+        },
+        date: {
+            endYear: 2022 // The year before which our mutated date should be generated
+        }
+      }));
+    });
+  }
+});
+```
+
 
 ## Testing
 
