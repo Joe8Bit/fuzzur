@@ -20,8 +20,16 @@ npm install fuzzur
 Using the fuzzer is simple, in it's most basic forum it can be used thusly.
 
 ```javascript
-var fuzzur = require('fuzzur'),
-    mutated = fuzzur.mutate(/* Some data type */);
+var test = require('tap').test,
+    fuzzur = require('fuzzur');
+
+test('My thing does something', function(t) {
+  for (var i = 0; i < 1000; i++) {
+    t.doesNotThrow(function() {
+      myThing(fuzzur.mutate( /* some input type */ ));
+    });
+  }
+});
 ```
 
 Fuzzur supports many data types out of the box: `Object`, `Array`, `String`, `Number`, `Regex`. It also supports `n` recursion levels for `Object` and `Array`.
