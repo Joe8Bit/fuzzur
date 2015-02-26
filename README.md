@@ -41,3 +41,11 @@ Please see the `./test/` directory for many more examples.
 ```
 npm test
 ```
+
+## Notes
+
+There are currently three types that not mutable via Fuzzur, they are:
+
+* `Function` - this is coming soon
+* `Undefined`
+* `null`
