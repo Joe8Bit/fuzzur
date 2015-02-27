@@ -1,6 +1,6 @@
-var assert  = require('assert'),
-    type    = require('type-detect'),
-    fuzzer  = require('../src/');
+var assert  = require('assert');
+var type    = require('type-detect');
+var fuzzer  = require('../src/');
 
 describe('The fuzzer', function() {
 

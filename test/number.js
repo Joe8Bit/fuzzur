@@ -1,6 +1,6 @@
-var assert  = require('assert'),
-    type    = require('type-detect'),
-    fuzzer  = require('../src/');
+var assert  = require('assert');
+var type    = require('type-detect');
+var fuzzer  = require('../src/');
 
 describe('The fuzzer', function() {
 
@@ -11,10 +11,10 @@ describe('The fuzzer', function() {
   describe('should mutate numbers', function() {
 
     it('when passed directly in', function() {
-      var inte = 12,
-          flt = 12.34,
-          intMut = fuzzer.mutate(inte);
-          fltMut = fuzzer.mutate(flt);
+      var inte = 12;
+      var flt = 12.34;
+      var intMut = fuzzer.mutate(inte);
+      var fltMut = fuzzer.mutate(flt);
 
       assert.notEqual(inte, intMut);
       assert.equal(isInt(intMut), true);
@@ -29,12 +29,12 @@ describe('The fuzzer', function() {
     it('when passed as an object property', function() {
       var inte = {
             foo: 12
-          },
-          flt = {
+          };
+      var flt = {
             bar: 12.34
-          },
-          intMut = fuzzer.mutate(inte);
-          fltMut = fuzzer.mutate(flt);
+          };
+      var intMut = fuzzer.mutate(inte);
+      var fltMut = fuzzer.mutate(flt);
 
       assert.notEqual(inte.foo, intMut.foo);
       assert.equal(isInt(intMut.foo), true);
@@ -49,12 +49,12 @@ describe('The fuzzer', function() {
     it('when passed as an array item', function() {
       var inte = {
             foo: 12
-          },
-          flt = {
+          };
+      var flt = {
             bar: 12.34
-          },
-          intMut = fuzzer.mutate(inte);
-          fltMut = fuzzer.mutate(flt);
+          };
+      var intMut = fuzzer.mutate(inte);
+      var fltMut = fuzzer.mutate(flt);
 
       assert.notEqual(inte.foo, intMut.foo);
       assert.equal(isInt(intMut.foo), true);

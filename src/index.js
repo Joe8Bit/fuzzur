@@ -1,16 +1,18 @@
-var type  = require('type-detect'),
-    _     = require('lodash'),
-    merge = require('deepmerge');
+'use strict';
+
+var type  = require('type-detect');
+var _     = require('lodash');
+var merge = require('deepmerge');
 
 /**
- * The public mutate method, takes data, mutates it and returns a mutate copy 
+ * The public mutate method, takes data, mutates it and returns a mutate copy
  * @param  {Any} data Any data format
  * @param  {Object} config An options block, that corressponds to the defaults laid out below
  * @return {Any}      Returns whatever data type the function is called with
  */
 function mutate(data, config) {
-  var _mutateInstance = new MutateData(data, (config || {})),
-      typeOf = type(data);
+  var _mutateInstance = new MutateData(data, (config || {}));
+  var typeOf = type(data);
 
   return _mutateInstance[typeOf]();
 }
@@ -51,8 +53,8 @@ function MutateData(data, config) {
  * @return {Object}     The mutates object, a copy of the mutator
  */
 MutateData.prototype.object = function(obj) {
-  var _this = this,
-      copy = _.extend({}, (obj || this.data));
+  var _this = this;
+  var copy = _.extend({}, (obj || this.data));
 
   Object.keys(copy).forEach(function(key) {
     copy[key] = _this[type(copy[key])](copy[key]);
@@ -67,8 +69,8 @@ MutateData.prototype.object = function(obj) {
  * @return {Array}     The mutated array
  */
 MutateData.prototype.array = function(arr) {
-  var _this = this,
-      mutator = arr || this.data;
+  var _this = this;
+  var mutator = arr || this.data;
 
   return _.map(mutator, function(item) {
     return _this[type(item)](item);
@@ -81,16 +83,16 @@ MutateData.prototype.array = function(arr) {
  * @return {String}     The mutated string
  */
 MutateData.prototype.string = function(str) {
-    var mutator = str || this.data,
-        split = mutator.split(''),
-        passes = _.random(1, this.config.string.randomisationPasses),
-        i;
+  var mutator = str || this.data;
+  var split = mutator.split('');
+  var passes = _.random(1, this.config.string.randomisationPasses);
+  var i;
 
-    for (i = 0; i < passes; i++) {
-      split.splice(_.random(0, split.length), 0, this.config.string.sampleSet.split('')[_.random(0, this.config.string.sampleSet.length)]);
-    }
+  for (i = 0; i < passes; i++) {
+    split.splice(_.random(0, split.length), 0, this.config.string.sampleSet.split('')[_.random(0, this.config.string.sampleSet.length)]);
+  }
 
-    return _.shuffle(split).join('');
+  return _.shuffle(split).join('');
 };
 
 /**
@@ -127,11 +129,11 @@ MutateData.prototype.float = function(num) {
  */
 MutateData.prototype.regexp = function(reg) {
   // This is a VERY naive mutation
-  var mutator = reg || this.data,
-      composition = mutator.toString().split('/'),
-      pattern = composition[1],
-      newPattern = this.string(pattern.replace('-', '')),
-      flags = composition[2];
+  var mutator = reg || this.data;
+  var composition = mutator.toString().split('/');
+  var pattern = composition[1];
+  var newPattern = this.string(pattern.replace('-', ''));
+  var flags = composition[2];
 
   return new RegExp([newPattern, flags].join('/'));
 };
@@ -163,8 +165,8 @@ MutateData.prototype.undefined = function() {
  * @return {Date}    The new mutated date
  */
 MutateData.prototype.date = function(dt) {
-  var start = dt || this.data,
-      end = new Date(this.config.date.endYear, 1, 1);
+  var start = dt || this.data;
+  var end = new Date(this.config.date.endYear, 1, 1);
 
   return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
 };

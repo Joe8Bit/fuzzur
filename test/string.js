@@ -1,6 +1,6 @@
-var assert  = require('assert'),
-    type    = require('type-detect'),
-    fuzzer  = require('../src/');
+var assert  = require('assert');
+var type    = require('type-detect');
+var fuzzer  = require('../src/');
 
 describe('The fuzzer', function() {
 
@@ -25,8 +25,8 @@ describe('The fuzzer', function() {
     });
 
     it('and make an arbitrary number of randomisation passes', function() {
-      var str = 'kuh83',
-          mut = fuzzer.mutate(str, {
+      var str = 'kuh83';
+      var mut = fuzzer.mutate(str, {
             string: {
               randomisationPasses: 50
             }
@@ -35,10 +35,10 @@ describe('The fuzzer', function() {
     });
 
     it('and take an arbitrary sample set to mutate strings from', function() {
-      var allowedStrings = ['f', 'o', 'o', 'A', 'B'],
-          str = 'foo',
-          sample = 'AB',
-          mut = fuzzer.mutate(str, {
+      var allowedStrings = ['f', 'o', 'o', 'A', 'B'];
+      var str = 'foo';
+      var sample = 'AB';
+      var mut = fuzzer.mutate(str, {
             string: {
               sampleSet: sample
             }

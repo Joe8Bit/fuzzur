@@ -1,7 +1,7 @@
-var assert  = require('assert'),
-    type    = require('type-detect'),
-    fuzzer  = require('../src/'),
-    _       = require('lodash');
+var assert  = require('assert');
+var type    = require('type-detect');
+var fuzzer  = require('../src/');
+var _       = require('lodash');
 
 describe('The fuzzer', function() {
 
@@ -10,8 +10,8 @@ describe('The fuzzer', function() {
     it('when passed directly in', function() {
       var obj = {
             foo: 'bar'
-          },
-          mut = fuzzer.mutate(obj);
+          };
+      var mut = fuzzer.mutate(obj);
 
       assert.notEqual(obj.foo, mut.foo);
       assert.equal(type(mut), 'object');
@@ -20,8 +20,8 @@ describe('The fuzzer', function() {
     it('when passed in as an item in an array', function() {
       var arr = ['023948', {
             foo: 'bar'
-          }]
-          mut = fuzzer.mutate(arr);
+          }];
+      var mut = fuzzer.mutate(arr);
 
       assert.notEqual(arr[1].foo, mut[1].foo);
       assert.equal(type(arr[1]), 'object');
@@ -33,8 +33,8 @@ describe('The fuzzer', function() {
             baz: {
               blork: 'grump'
             }
-          },
-          mut = fuzzer.mutate(obj);
+          };
+      var mut = fuzzer.mutate(obj);
 
       assert.notEqual(obj.baz.blork, mut.baz.blork);
       assert.equal(type(obj.baz), 'object');
